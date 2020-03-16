@@ -1,0 +1,66 @@
+.preview-image {
+    height: 300px;
+    width: 500px;
+    margin: 1rem;
+    background-size: cover;
+
+    @media screen and (max-width: 500px) {
+        width: 350px;
+        height: 200px;
+
+    }
+
+    .mobile-link {
+        cursor: pointer;
+        position: relative;
+        left: 5px;
+
+        a {
+            color: white;
+            background-color: rgba($color: #000000, $alpha: .4);
+            padding: 10px;
+            border-radius: 5px;
+
+        }
+
+        @media screen and (min-width: 1000px) {
+            display: none;
+        }
+    }
+
+    .copyright {
+        position: relative;
+        top: 90%;
+        height: 10%;
+        text-align: center;
+        display: block;
+        width: 100% !important;
+        color: white;
+        background-color: rgba($color: #000000, $alpha: .5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @media screen and (max-width: 1000px) {
+            height: 15%;
+            top: 85%
+        }
+
+        p {
+            padding-top: 10px;
+        }
+    }
+
+    .heart {
+        position: relative;
+        color: white;
+        left: 470px;
+        top: 10px;
+        cursor: pointer;
+        color: none;
+        background-color: black;
+        padding: 2px 4px;
+        border-radius: 50%;
+        height: 10%;
+    }
+}

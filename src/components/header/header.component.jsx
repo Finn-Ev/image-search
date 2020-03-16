@@ -1,0 +1,77 @@
+import React from "react";
+import "./header.styles.scss";
+
+import { connect } from "react-redux";
+import { toggleNavbar, closeNavbar } from "../../redux/navbar/navbar.actions";
+
+import Navbar from "react-bootstrap/Navbar";
+import { NavLink, Link } from "react-router-dom";
+
+// category menus for different screens
+import NavDropdown from "../nav-dropdown/nav-dropdown.component";
+import MobileCategoryMenu from "../mobile-category-menu/mobile-category-menu.component";
+
+const Header = ({
+  favouriteImageIDs,
+  showMobileNavbar,
+  toggleNavbar,
+  closeNavbar
+}) => {
+  return (
+    <Navbar bg="dark" className="header">
+      <Link onClick={closeNavbar} className="brand" to="/">
+       Image Search
+      </Link>
+
+      {showMobileNavbar ? (
+        <div className="mobile-nav-links">
+          <NavLink id="home-link" onClick={closeNavbar} exact to="/">
+            Home
+          </NavLink>
+
+          <MobileCategoryMenu />
+
+          <NavLink 
+            onClick={closeNavbar}
+            id="favourites-link"
+            exact
+            to="/favoriten"
+          >
+            Favoriten ({favouriteImageIDs.length})
+          </NavLink>
+        </div>
+      ) : (
+        ""
+      )}
+      <div className="desktop-nav-links">
+        <NavLink exact to="/">
+          Home
+        </NavLink>
+
+        <NavDropdown />
+
+        <NavLink id="favourites-link" exact to="/favoriten">
+          Favoriten ({favouriteImageIDs.length})
+        </NavLink>
+      </div>
+
+      <div onClick={toggleNavbar} className="toggle-navbar">
+        <div className={`${showMobileNavbar ? "bar-toggled" : "bar-default"} bar-1`}></div>
+        <div className={`${showMobileNavbar ? "bar-toggled" : "bar-default"} bar-2`}></div>
+        <div className={`${showMobileNavbar ? "bar-toggled" : "bar-default"} bar-3`}></div>
+      </div>
+    </Navbar>
+  );
+};
+
+const mapStateToProps = state => ({
+  favouriteImageIDs: state.favouriteImages.imageIDs,
+  showMobileNavbar: state.navbar.showMobileNavbar
+});
+
+const mapDispatchToProps = dispatch => ({
+  toggleNavbar: () => dispatch(toggleNavbar()),
+  closeNavbar: () => dispatch(closeNavbar())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

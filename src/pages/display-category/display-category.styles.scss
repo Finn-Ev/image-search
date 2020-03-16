@@ -1,0 +1,29 @@
+$accent: rgb(28, 157, 180);
+
+.category-wrapper {
+    margin-top: 8vh;
+
+    .category-heading {
+        display: flex;
+        padding: 1.5rem 0;
+        align-items: center;
+        color: white;
+        justify-content: center;
+
+        background-color: $accent;
+
+        & h3 {
+            text-align: center;
+            font-weight: 300;
+            font-size: 2.25rem;
+        }
+    }
+
+    .category-images {
+        padding-top: 3.5vh;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+    }
+}

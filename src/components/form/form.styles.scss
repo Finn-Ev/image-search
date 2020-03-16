@@ -1,0 +1,58 @@
+.search-area {
+    position: relative;
+    display: flex;
+    background-image: url(./form-background.png);
+    background-size: cover;
+  
+    .form-wrapper {
+      width: 100%;
+      background: rgba($color: #000000, $alpha: 0.5);
+      height: 100%;
+      padding-top: 5vh;
+  
+      h3 {
+        text-align: center;
+        padding-top: 2rem;
+        max-width: 90%;
+        margin: auto;
+        font-weight: 400;
+        color: white;
+      }
+  
+      .form {
+        width: 30%;
+        min-width: 250px;
+        margin: 5vh auto;
+  
+        .form-group {
+          .image-amount-wrapper {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+  
+            label {
+              color: white;
+              letter-spacing: 0.5px;
+              font-weight: 400;
+            }
+  
+            select {
+              background: white;
+              border: 0.5px solid grey;
+              border-radius: 2px;
+  
+              option {
+                border: 0.5px solid grey;
+              }
+            }
+          }
+  
+          button {
+            position: relative;
+            margin-bottom: 2rem;
+          }
+        }
+      }
+    }
+  }
+  

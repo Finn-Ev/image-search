@@ -1,0 +1,103 @@
+.button-wrapper {
+    position: relative;
+    left: 90%;
+    display: flex;
+    height: 70px;
+    justify-content: space-between;
+    flex-direction: column;
+
+
+    @media screen and (max-width: 999px) {
+        left: 87.5% !important;
+    }
+
+    .modal-link-desktop,
+    .modal-link-mobile,
+    .toggle-favourite {
+        background: rgba($color: #ffffff, $alpha: 0.75);
+        color: black;
+        width: 30px;
+        height: 30px;
+        padding: 5px;
+        border: 0.5px solid black;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & a {
+            color: black;
+        }
+
+        &:hover {
+            background: rgba($color: #f0f0f0, $alpha: 1);
+        }
+
+    }
+
+    .modal-link-desktop {
+        @media screen and (max-width: 999px) {
+            display: none;
+        }
+    }
+
+    .modal-link-mobile {
+        @media screen and (min-width: 1000px) {
+            display: none;
+        }
+    }
+
+}
+
+.toggle-favourite,
+.toggle-favourite-modal {
+    color: rgb(141, 97, 97) !important;
+    cursor: pointer;
+}
+
+.animate-heart i {
+    animation: increase-size ease 0.3s;
+
+    @keyframes increase-size {
+
+        0%,
+        100% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.25);
+        }
+    }
+}
+
+.is-favourite-image {
+    color: red !important;
+}
+
+.toggle-favourite-modal {
+    font-size: 1.5rem;
+    margin-right: 10px !important;
+
+
+}
+
+.show {
+    .modal-content {
+        width: auto;
+        right: 0 !important;
+
+        .modal-body {
+            height: 500px;
+            background-size: cover;
+        }
+
+        button {
+            a {
+                color: white;
+                text-decoration: none;
+            }
+        }
+    }
+}

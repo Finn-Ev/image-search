@@ -1,0 +1,33 @@
+.favoriten-page {
+    margin-bottom: 2rem;
+    margin-top: 8vh;
+
+    .header-area {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        background-color: #fee140;
+        background-image: linear-gradient(270deg,
+                rgb(219, 189, 15) 0%,
+                rgb(214, 35, 89) 100%);
+
+        & h3 {
+            color: white;
+            text-align: center;
+            font-weight: 300;
+            font-size: 2.25rem;
+        }
+    }
+
+    .favourite-images {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .empty {
+            font-size: 1.25rem;
+            margin-top: 1rem;
+            max-width: 90%;
+            text-align: center;
+        }
+    }
+}

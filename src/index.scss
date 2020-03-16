@@ -1,0 +1,29 @@
+$accent: rgb(42, 190, 216);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+html {
+  scroll-behavior: smooth;
+  $accent: rgb(28, 157, 180)
+}
+
+body{
+  background-color: rgb(241, 241, 241);
+}
+
+// styles for active page link
+.active {
+  border-bottom: 1px solid $accent;
+  padding-bottom: 3px;
+  @media screen and (max-width: 768px) {
+    border-bottom: none;
+    color: $accent !important;
+  }
+}
+
+
