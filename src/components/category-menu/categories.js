@@ -1,6 +1,6 @@
 const categories = [
 	{   
-		name: 'Natur',
+		name: "Natur",
 		imageURL: 'https://cdn.pixabay.com/photo/2015/06/19/21/24/the-road-815297_1280.jpg',
     },
     {
@@ -20,7 +20,7 @@ const categories = [
 		imageURL: 'https://cdn.pixabay.com/photo/2018/02/06/14/07/dance-3134828_1280.jpg',
 	},
 	{
-		name: 'Personen',
+		name: 'Menschen',
 		imageURL: 'https://cdn.pixabay.com/photo/2017/08/30/12/45/girl-2696947_960_720.jpg',
 	},
 ];
