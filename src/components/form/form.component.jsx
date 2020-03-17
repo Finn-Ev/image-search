@@ -15,7 +15,9 @@ const MyForm = ({ homepage, handleSubmit, setQueryString, setImageAmount, queryS
     };
     const handleSelect = e => {
         setImageAmount(e.target.value);
-        if(e.target.value == 100){
+        console.log(e.target.value);
+        
+        if(e.target.value === "100"){ 
             setShowWarning(true)
         } else {
             setShowWarning(false)
