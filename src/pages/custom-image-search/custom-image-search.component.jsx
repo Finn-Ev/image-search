@@ -40,6 +40,7 @@ const CustomImageSearchPage = ({ imageAmount, queryString, match, history }) => 
     setQueryInfo(urlQueryString);
     history.push(`/suche/${queryString}`);
     fetchImages();
+    window.scrollTo(0, 350)
   };
 
   return (
@@ -50,7 +51,7 @@ const CustomImageSearchPage = ({ imageAmount, queryString, match, history }) => 
       ) : (
         <div>
           {queryInfo && images.length ? (
-            <p className="query-info bg-dark">Ergebnisse für "{queryInfo}":</p>
+            <p id="query-info" className="query-info bg-dark">Ergebnisse für "{queryInfo}":</p>
           ) : (
             ""
           )}
