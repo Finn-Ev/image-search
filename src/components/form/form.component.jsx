@@ -27,6 +27,7 @@ const MyForm = ({ homepage, handleSubmit, setQueryString, setImageAmount, queryS
                         <Form.Control
                             className="mb-3"
                             required
+                            aria-label="search images"
                             onChange={handleChange}
                             type="text"
                             name="queryString"
@@ -36,7 +37,7 @@ const MyForm = ({ homepage, handleSubmit, setQueryString, setImageAmount, queryS
                             <Form.Label>Anzahl Bilder:&nbsp; </Form.Label>
 
                             <div className="select-wrapper">
-                                <select name="imageAmount" onInput={handleSelect} className="mb-3">
+                                <select aria-label="select image amount" name="imageAmount" onInput={handleSelect} className="mb-3">
                                     <option>25</option>
                                     <option>50</option>
                                     <option>100</option>
