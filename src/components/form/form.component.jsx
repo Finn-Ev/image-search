@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './form.styles.scss';
 
 import Form from 'react-bootstrap/Form';
@@ -8,11 +8,18 @@ import { setImageAmount, setQueryString, setQueryInfo } from '../../redux/search
 import { connect } from 'react-redux';
 
 const MyForm = ({ homepage, handleSubmit, setQueryString, setImageAmount, queryString }) => {
+    const [showWarning, setShowWarning] = useState(false)
+
     const handleChange = e => {
         setQueryString(e.target.value);
     };
     const handleSelect = e => {
         setImageAmount(e.target.value);
+        if(e.target.value == 100){
+            setShowWarning(true)
+        } else {
+            setShowWarning(false)
+        }
     };
 
     return (
@@ -44,7 +51,9 @@ const MyForm = ({ homepage, handleSubmit, setQueryString, setImageAmount, queryS
                                 </select>
                             </div>
                         </div>
-
+                        {
+                            showWarning ? <span className="warning">ggf. längere Ladezeit der Bilder</span> : ""
+                        }
                         <Button type="submit" variant="success">
                             Suchen
 					</Button>
