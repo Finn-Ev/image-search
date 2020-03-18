@@ -6,9 +6,9 @@
     position: fixed;
     background-color: white;
     box-shadow: 0px 0px 12px black;
-    animation: slide-in 1s ease-out;
+    animation: slide-in-top 1s ease-out;
 
-    @keyframes slide-in {
+    @keyframes slide-in-top {
         0% {
             transform: translateY(-150vh);
         }

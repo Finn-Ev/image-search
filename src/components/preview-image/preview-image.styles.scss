@@ -1,6 +1,18 @@
 .preview-image-wrapper {
     overflow: hidden;
     margin: 0 1rem;
+    animation: slide-in-left 1.5s ease-out;
+
+    @keyframes slide-in-left {
+        0%{
+            opacity: 0;
+            transform: translateX(-400vw);
+        }
+        100%{
+            transform: translateX(0) !important;
+            opacity: 1;
+        }
+    }
 
     img {
         height: 400px;
@@ -9,16 +21,12 @@
         @media screen and (max-width: 1600px) {
             height: 325px;
         }
-
         @media screen and (max-width: 1000px) {
             height: 200px;
         }
-
         @media screen and (max-width: 350px) {
             height: 150px;
         }
-
-
     }
 
     .image-footer {
