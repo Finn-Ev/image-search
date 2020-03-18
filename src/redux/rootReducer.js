@@ -5,6 +5,7 @@ import storage from "redux-persist/lib/storage";
 import { favouriteImagesReducer } from "./favouriteImages/favouriteImages.reducer";
 import { searchImagesReducer } from "./searchImages/searchImages.reducer"
 import { navbarReducer } from "./navbar/navbar.reducer"
+import { modalReducer } from "./modal/modal.reducer"
 
 
 const persistConfig = {
@@ -17,7 +18,8 @@ const persistConfig = {
  const rootReducer = combineReducers({
     favouriteImages: favouriteImagesReducer,
     searchImages: searchImagesReducer,
-    navbar: navbarReducer
+    navbar: navbarReducer,
+    modal: modalReducer
 })
 
 export default persistReducer(persistConfig, rootReducer)

@@ -9,17 +9,18 @@ const CategoryPage = ({ match }) => {
     const [images, setImages] = useState([]);
 
     useEffect(() => {
-        fetchCategoryImages(category);
+       localStorage.getItem(category) ? setImages(JSON.parse(localStorage.getItem(category))) : fetchCategoryImages();
     }, [category]);
 
     const fetchCategoryImages = () => {
         fetch(
-            `https://pixabay.com/api/?key=15127892-8696442402301390dd419b3b1&per_page=100&q=${category}&lang=de}`
+            `https://pixabay.com/api/?key=15127892-8696442402301390dd419b3b1&per_page=100&q=${category}&lang=de&safesearch=true}`
         )
             .then(res => res.json())
             .then(data => {
                 const images = data.hits;
                 setImages(images);
+                localStorage.setItem(category, JSON.stringify(images)) // store API answer in localstorage to prevent equal requests
             });
     };
     return (

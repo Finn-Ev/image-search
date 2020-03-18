@@ -1,0 +1,80 @@
+.button-wrapper {
+    position: relative;
+    display: flex;
+    width: 60px;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    margin-right: 10px;
+    
+
+    .modal-link,
+    .mobile-link,
+    .toggle-favourite {
+        background: rgba($color: #ffffff, $alpha: 0.75);
+        color: black;
+        width: 25px;
+        height: 25px;
+        margin: 5px 0;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & a {
+            color: black;
+        }
+
+        &:hover {
+            background: rgba($color: #f0f0f0, $alpha: 1);
+        }
+
+    }
+
+    .modal-link {
+        @media screen and (max-width: 999px) {
+            display: none;
+        }
+    }
+
+    .mobile-link {
+        @media screen and (min-width: 1000px) {
+            display: none;
+        }
+    }
+
+}
+
+.toggle-favourite,
+.toggle-favourite-modal {
+    color: rgb(141, 97, 97) !important;
+    cursor: pointer;
+}
+
+.animate-heart i {
+    animation: increase-size ease 0.3s;
+
+    @keyframes increase-size {
+
+        0%,
+        100% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.25);
+        }
+    }
+}
+
+.is-favourite-image {
+    color: red !important;
+}
+
+.toggle-favourite-modal {
+    font-size: 1.5rem;
+    margin-right: 10px !important;
+
+
+}

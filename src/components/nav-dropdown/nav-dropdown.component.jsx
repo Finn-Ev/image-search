@@ -4,9 +4,10 @@ import "./nav-dropdown.styles.scss"
 import { Dropdown } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 
-const NavDropdown = ({history}) => {
+const NavDropdown = ({history, closeModal}) => {
     const handleSelect = category => {
         history.push(`/kategorie/${category}`)
+        closeModal()
     }
 
     return (

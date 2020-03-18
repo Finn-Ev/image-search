@@ -7,20 +7,25 @@ import { toggleNavbar, closeNavbar } from "../../redux/navbar/navbar.actions";
 import Navbar from "react-bootstrap/Navbar";
 import { NavLink, Link } from "react-router-dom";
 
+import Modal from "../modal/modal.component"
+
 // category menus for different screens
 import NavDropdown from "../nav-dropdown/nav-dropdown.component";
 import MobileCategoryMenu from "../mobile-category-menu/mobile-category-menu.component";
+import { openModal, closeModal } from "../../redux/modal/modal.actions";
 
 const Header = ({
   favouriteImageIDs,
   showMobileNavbar,
   toggleNavbar,
-  closeNavbar
+  closeNavbar,
+  closeModal
 }) => {
   return (
-    <Navbar bg="dark" className="header">
+    <>
+    <Navbar  bg="dark" className="header">
       <Link onClick={closeNavbar} className="brand" to="/">
-       Image Search
+        Image Search
       </Link>
 
       {showMobileNavbar ? (
@@ -31,7 +36,7 @@ const Header = ({
 
           <MobileCategoryMenu />
 
-          <NavLink 
+          <NavLink
             onClick={closeNavbar}
             id="favourites-link"
             exact
@@ -41,16 +46,16 @@ const Header = ({
           </NavLink>
         </div>
       ) : (
-        ""
-      )}
+          ""
+        )}
       <div className="desktop-nav-links">
-        <NavLink exact to="/">
+        <NavLink onClick={closeModal} exact to="/">
           Home
         </NavLink>
 
-        <NavDropdown />
+        <NavDropdown closeModal={closeModal}/>
 
-        <NavLink id="favourites-link" exact to="/favoriten">
+        <NavLink onClick={closeModal} id="favourites-link" exact to="/favoriten">
           Favoriten ({favouriteImageIDs.length})
         </NavLink>
       </div>
@@ -61,6 +66,7 @@ const Header = ({
         <div className={`${showMobileNavbar ? "bar-toggled" : "bar-default"} bar-3`}></div>
       </div>
     </Navbar>
+    </>
   );
 };
 
@@ -71,7 +77,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   toggleNavbar: () => dispatch(toggleNavbar()),
-  closeNavbar: () => dispatch(closeNavbar())
+  closeNavbar: () => dispatch(closeNavbar()),
+  openModal: () => dispatch(openModal()),
+  closeModal: () => dispatch(closeModal())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

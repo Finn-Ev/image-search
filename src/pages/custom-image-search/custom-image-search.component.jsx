@@ -15,6 +15,8 @@ const CustomImageSearchPage = ({ imageAmount, queryString, match, history }) => 
   const urlQueryString = match.params.urlQueryString;
 
   const fetchImages = () => {
+    console.log("------------fetching-----------------");
+    
     fetch(
       `https://pixabay.com/api/?key=15127892-8696442402301390dd419b3b1&q=${urlQueryString}&lang=de&per_page=${imageAmount}`
     )
@@ -33,6 +35,7 @@ const CustomImageSearchPage = ({ imageAmount, queryString, match, history }) => 
   useEffect(() => {
     fetchImages();
     setQueryInfo(urlQueryString);
+
   }, [urlQueryString]);
 
   const handleSubmit = e => {
