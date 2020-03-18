@@ -3,33 +3,21 @@ import './preview-image-footer.styles.scss';
 
 import { connect } from 'react-redux';
 
-import { addToFavouriteImages, removeFromFavouriteImages } from '../../redux/favouriteImages/favouriteImages.actions';
+import { toggleFavouriteImage } from '../../redux/favouriteImages/favouriteImages.actions';
 import { openModal, closeModal } from '../../redux/modal/modal.actions';
 
 
-const PreviewImageFooter = ({ addToFavouriteImages, removeFromFavouriteImages, openModal, favouriteImageIDs, image, }) => {
-    const [animateHeart, setAnimateHeart] = useState(false)
+const PreviewImageFooter = ({ toggleFavouriteImage, openModal, favouriteImageIDs, image, }) => {
 
-    const { largeImageURL, user } = image;
 
-    const handleToggle = image => {
-
-        if (favouriteImageIDs.includes(image.id)) {
-            removeFromFavouriteImages(image.id);
-            setAnimateHeart(false)
-        } else if (!favouriteImageIDs.includes(image.id)) {
-            addToFavouriteImages(image.id);
-            setAnimateHeart(true)
-        }
-    };
-
+    const { largeImageURL, user, userImageURL } = image;
 
     return (
         <div className="image-footer">
-            <p>&copy; {image.id}</p>
+            <p>&copy; {user}</p>
 
             <div className="button-wrapper">
-                <span className="modal-link" onClick={()=>openModal(image)}>
+                <span className="modal-link" onClick={() => openModal(image)}>
                     <i className="fas fa-search-plus"></i>
                 </span>
 
@@ -38,8 +26,8 @@ const PreviewImageFooter = ({ addToFavouriteImages, removeFromFavouriteImages, o
                 </span>
 
                 <span
-                    onClick={() => handleToggle(image)}
-                    className={`toggle-favourite ${favouriteImageIDs.includes(image.id) ? 'is-favourite-image' : ''} ${animateHeart ? "animate-heart" : ""}`}
+                    onClick={() => toggleFavouriteImage(image.id)}
+                    className={`toggle-favourite ${favouriteImageIDs.includes(image.id) ? 'is-favourite-image' : ''}`}
                 >
                     <i className="fas fa-heart"></i>
                 </span>
@@ -53,8 +41,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    addToFavouriteImages: image => dispatch(addToFavouriteImages(image)),
-    removeFromFavouriteImages: image => dispatch(removeFromFavouriteImages(image)),
+    toggleFavouriteImage: image => dispatch(toggleFavouriteImage(image)),
     openModal: image => dispatch(openModal(image)),
 });
 

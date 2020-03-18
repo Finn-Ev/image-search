@@ -25,9 +25,8 @@
         & a {
             color: black;
         }
-
         &:hover {
-            background: rgba($color: #f0f0f0, $alpha: 1);
+            background: rgba($color: #ffffff, $alpha: 1);
         }
 
     }
@@ -46,10 +45,13 @@
 
 }
 
-.toggle-favourite,
-.toggle-favourite-modal {
+.toggle-favourite {
     color: rgb(141, 97, 97) !important;
     cursor: pointer;
+}
+
+.is-favourite-image {
+    color: red !important;
 }
 
 .animate-heart i {
@@ -66,15 +68,4 @@
             transform: scale(1.25);
         }
     }
-}
-
-.is-favourite-image {
-    color: red !important;
-}
-
-.toggle-favourite-modal {
-    font-size: 1.5rem;
-    margin-right: 10px !important;
-
-
 }

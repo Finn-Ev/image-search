@@ -1,31 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "./modal.styles.scss"
 
 import { connect } from 'react-redux';
 import { closeModal } from '../../redux/modal/modal.actions';
-import { addToFavouriteImages, removeFromFavouriteImages } from '../../redux/favouriteImages/favouriteImages.actions';
+import { toggleFavouriteImage } from '../../redux/favouriteImages/favouriteImages.actions';
 
 
-const Modal = ({ closeModal, addToFavouriteImages, removeFromFavouriteImages, currentImage, favouriteImageIDs }) => {
-    const [animateHeart, setAnimateHeart] = useState(false)
-
-    const handleToggle = image => {
-        if (favouriteImageIDs.includes(image.id)) {
-            removeFromFavouriteImages(image.id);
-            setAnimateHeart(false)
-        } else if (!favouriteImageIDs.includes(image.id)) {
-            addToFavouriteImages(image.id);
-            setAnimateHeart(true)
-        }
-    };
+const Modal = ({ closeModal, toggleFavouriteImage, currentImage, favouriteImageIDs }) => {
 
     return (
         currentImage ?
             <div className="modal">
                 <div className="modal-buttons">
                     <span
-                        onClick={() => handleToggle(currentImage)}
-                        className={`toggle-favourite ${favouriteImageIDs.includes(currentImage.id) ? 'is-favourite-image' : ''} ${animateHeart ? "animate-heart" : ""}`}
+                        onClick={() => toggleFavouriteImage(currentImage.id)}
+                        className={`toggle-favourite ${favouriteImageIDs.includes(currentImage.id) ? 'is-favourite-image' : ''}`}
                     >
                         <i className="fas fa-heart"></i>
                     </span>
@@ -50,8 +39,7 @@ const mapStateToProps = (state => {
 
 const mapDispatchToProps = (dispatch) => ({
     closeModal: () => dispatch(closeModal()),
-    addToFavouriteImages: image => dispatch(addToFavouriteImages(image)),
-    removeFromFavouriteImages: image => dispatch(removeFromFavouriteImages(image))
+    toggleFavouriteImage: image => dispatch(toggleFavouriteImage(image))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Modal)

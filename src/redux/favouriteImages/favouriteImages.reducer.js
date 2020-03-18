@@ -1,20 +1,16 @@
+import { handleToggleFavouriteImage } from "./favouriteImages.utils";
+
 const initalState = {
 	imageIDs: [],
 };
 
 export const favouriteImagesReducer = (state = initalState, action) => {
 	switch (action.type) {
-		case 'ADD_TO_FAVOURITE_IMAGES':
+		case "TOGGLE_FAVOURITE_IMAGE":
 			return {
 				...state,
-				imageIDs: [...state.imageIDs, action.payload],
-			};
-		case 'REMOVE_FROM_FAVOURITE_IMAGES':
-			return {
-				...state,
-				imageIDs: state.imageIDs.filter(imageID => imageID !== action.payload),
-			};
-		case 'SET_IMAGE_AMOUNT':
+				imageIDs: handleToggleFavouriteImage(state.imageIDs, action.payload)
+			}
 		default:
 			return state;
 	}

@@ -9,7 +9,7 @@ const CategoryPage = ({ match }) => {
     const [images, setImages] = useState([]);
 
     useEffect(() => {
-       localStorage.getItem(category) ? setImages(JSON.parse(localStorage.getItem(category))) : fetchCategoryImages();
+        fetchCategoryImages();
     }, [category]);
 
     const fetchCategoryImages = () => {
@@ -20,7 +20,7 @@ const CategoryPage = ({ match }) => {
             .then(data => {
                 const images = data.hits;
                 setImages(images);
-                localStorage.setItem(category, JSON.stringify(images)) // store API answer in localstorage to prevent equal requests
+
             });
     };
     return (

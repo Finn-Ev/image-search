@@ -1,37 +1,51 @@
 .modal {
     display: inline-block;
     width: 90vw;
-   height: 85%;
+    height: 85%;
     margin: 10vh 5vw 0 5vw;
     position: fixed;
     background-color: white;
     box-shadow: 0px 0px 12px black;
+    animation: slide-in 1s ease-out;
 
-    .modal-buttons{
+    @keyframes slide-in {
+        0% {
+            transform: translateY(-150vh);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    .modal-buttons {
         position: relative;
         left: 86vw;
         margin-top: 2px;
-        .close-modal, .toggle-favourite {
+
+        .close-modal,
+        .toggle-favourite {
             cursor: pointer;
             margin: 5px;
             font-size: 1.25rem;
             color: rgb(107, 107, 107);
-    
+
             &:hover {
                 color: black;
             }
         }
-       
+
     }
 
-  
+
 
     .modal-body {
-        
+
         height: 92.5%;
         display: flex;
         align-items: center;
         justify-content: center;
+
         img {
             height: 100%;
         }
