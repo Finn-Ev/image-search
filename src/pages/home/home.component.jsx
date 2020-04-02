@@ -6,8 +6,8 @@ import CategoryMenu from "../../components/category-menu/category-menu.component
 
 import Footer from "../../components/footer/footer.component";
 
-const HomePage = ({ history}) => {
-  const handleSubmit = (e, queryString )=> {
+const HomePage = ({ history }) => {
+  const handleSubmit = (e, queryString) => {
     e.preventDefault();
     history.push(`/suche/${queryString}`);
   };
@@ -20,6 +20,5 @@ const HomePage = ({ history}) => {
     </div>
   );
 };
-
 
 export default HomePage
