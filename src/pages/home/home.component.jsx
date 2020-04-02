@@ -4,11 +4,10 @@ import "./home.styles.scss";
 import MyForm from "../../components/form/form.component";
 import CategoryMenu from "../../components/category-menu/category-menu.component";
 
-import { connect } from "react-redux";
 import Footer from "../../components/footer/footer.component";
 
-const HomePage = ({ history, queryString }) => {
-  const handleSubmit = e => {
+const HomePage = ({ history}) => {
+  const handleSubmit = (e, queryString )=> {
     e.preventDefault();
     history.push(`/suche/${queryString}`);
   };
@@ -22,8 +21,5 @@ const HomePage = ({ history, queryString }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  queryString: state.searchImages.queryString
-});
 
-export default connect(mapStateToProps)(HomePage);
+export default HomePage

@@ -12,7 +12,6 @@ import CustomImageSearchPag from "./pages/custom-image-search/custom-image-searc
 import CategoryPage from "./pages/display-category/display-category.component";
 import Modal from "./components/modal/modal.component"
 
-import { connect } from "react-redux";
 
 function App() {
   return (

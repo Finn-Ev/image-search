@@ -11,16 +11,6 @@ export const searchImagesReducer = (state = initalState, action) => {
 				...state,
 				imageAmount: action.payload,
 			};
-		case 'SET_QUERY_STRING':
-			return {
-				...state,
-				queryString: action.payload,
-			};
-		case 'SET_QUERY_INFO':
-			return {
-				...state,
-				queryInfo: action.payload, 
-			};
 		default:
 			return state;
 	}

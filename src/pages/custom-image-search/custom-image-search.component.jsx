@@ -7,16 +7,13 @@ import MyForm from "../../components/form/form.component";
 
 import { connect } from "react-redux";
 
-const CustomImageSearchPage = ({ imageAmount, queryString, match, history }) => {
+const CustomImageSearchPage = ({ imageAmount, match, history }) => {
   const [images, setImages] = useState([]);
   const [noImagesFound, setNoImagesFound] = useState(false);
-  const [queryInfo, setQueryInfo] = useState("");
 
   const urlQueryString = match.params.urlQueryString;
 
   const fetchImages = () => {
-    console.log("------------fetching-----------------");
-    
     fetch(
       `https://pixabay.com/api/?key=15127892-8696442402301390dd419b3b1&q=${urlQueryString}&lang=de&per_page=${imageAmount}`
     )
@@ -34,13 +31,12 @@ const CustomImageSearchPage = ({ imageAmount, queryString, match, history }) => 
 
   useEffect(() => {
     fetchImages();
-    setQueryInfo(urlQueryString);
-
+    console.log("2.4.20");
+    
   }, [urlQueryString]);
 
-  const handleSubmit = e => {
+  const handleSubmit = (e, queryString) => {
     e.preventDefault();
-    setQueryInfo(urlQueryString);
     history.push(`/suche/${queryString}`);
     fetchImages();
     window.scrollTo(0, 350)
@@ -53,8 +49,8 @@ const CustomImageSearchPage = ({ imageAmount, queryString, match, history }) => 
         <p className="no-images-found">Keine Bilder gefunden</p>
       ) : (
         <div>
-          {queryInfo && images.length ? (
-            <p id="query-info" className="query-info bg-dark">Ergebnisse für "{queryInfo}":</p>
+          {urlQueryString && images.length ? (
+            <p id="query-info" className="query-info bg-dark">Ergebnisse für "{urlQueryString}":</p>
           ) : (
             ""
           )}
@@ -73,8 +69,6 @@ const CustomImageSearchPage = ({ imageAmount, queryString, match, history }) => 
 
 const mapStateToProps = state => ({
   imageAmount: state.searchImages.imageAmount,
-  queryString: state.searchImages.queryString,
-  queryInfo: state.searchImages.queryInfo,
 });
 
 export default connect(mapStateToProps)(CustomImageSearchPage);

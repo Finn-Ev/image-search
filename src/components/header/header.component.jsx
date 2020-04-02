@@ -7,8 +7,6 @@ import { toggleNavbar, closeNavbar } from "../../redux/navbar/navbar.actions";
 import Navbar from "react-bootstrap/Navbar";
 import { NavLink, Link } from "react-router-dom";
 
-import Modal from "../modal/modal.component"
-
 // category menus for different screens
 import NavDropdown from "../nav-dropdown/nav-dropdown.component";
 import MobileCategoryMenu from "../mobile-category-menu/mobile-category-menu.component";

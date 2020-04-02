@@ -4,10 +4,11 @@ import './form.styles.scss';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-import { setImageAmount, setQueryString, setQueryInfo } from '../../redux/searchImages/searchImages.actions';
+import { setImageAmount } from '../../redux/searchImages/searchImages.actions';
 import { connect } from 'react-redux';
 
-const MyForm = ({ homepage, handleSubmit, setQueryString, setImageAmount }) => {
+const MyForm = ({ homepage, handleSubmit }) => {
+    const [queryString, setQueryString] = useState("")
 
     const handleChange = e => {
         setQueryString(e.target.value);
@@ -22,7 +23,7 @@ const MyForm = ({ homepage, handleSubmit, setQueryString, setImageAmount }) => {
             <div className="form-wrapper">
                 {homepage ? <h3>Beeindruckende lizenzfreie Bilder</h3> : <h3>Weitere Bilder suchen</h3>}
                 <Form
-                    onSubmit={handleSubmit}
+                    onSubmit={(e)=>handleSubmit(e, queryString)}
                     className="form"
                 >
                     <Form.Group>
@@ -59,11 +60,8 @@ const MyForm = ({ homepage, handleSubmit, setQueryString, setImageAmount }) => {
 
 const mapDispatchToProps = dispatch => ({
     setImageAmount: amount => dispatch(setImageAmount(amount)),
-    setQueryString: queryString => dispatch(setQueryString(queryString)),
-    setQueryInfo: queryString => dispatch(setQueryInfo(queryString)),
+  
 });
 
-const mapStateToProps = state => ({
-    queryString: state.searchImages.queryString,
-});
-export default connect(mapStateToProps, mapDispatchToProps)(MyForm);
+
+export default connect(null, mapDispatchToProps)(MyForm);
