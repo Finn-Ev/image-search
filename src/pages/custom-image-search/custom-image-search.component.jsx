@@ -7,49 +7,35 @@ import MyForm from "../../components/form/form.component";
 
 import { connect } from "react-redux";
 
+import { fetchCustomImages } from "../../api";
+
 const CustomImageSearchPage = ({ imageAmount, match, history }) => {
   const [images, setImages] = useState([]);
-  const [noImagesFound, setNoImagesFound] = useState(false);
-
   const urlQueryString = match.params.urlQueryString;
 
-  const fetchImages = () => {
-    fetch(
-      `https://pixabay.com/api/?key=15127892-8696442402301390dd419b3b1&q=${urlQueryString}&lang=de&per_page=${imageAmount}`
-    )
-      .then(res => res.json())
-      .then(data => {
-        const images = data.hits;
-        if (images.length) {
-          setImages(images);
-          setNoImagesFound(false);
-        } else if (!images.length) {
-          setNoImagesFound(true);
-        }
-      });
-  };
-
   useEffect(() => {
-    fetchImages();
-    console.log("2.4.20");
-    
-  }, [urlQueryString]);
+   const fetchAPI = async() => {
+    setImages(await fetchCustomImages(urlQueryString, imageAmount))
+   }
+   fetchAPI()
+   
+  }, [urlQueryString, imageAmount]);
 
-  const handleSubmit = (e, queryString) => {
+  const handleSubmit = async(e, queryString) => {
     e.preventDefault();
     history.push(`/suche/${queryString}`);
-    fetchImages();
+    setImages(await fetchCustomImages(urlQueryString, imageAmount))
     window.scrollTo(0, 350)
   };
 
   return (
     <div className="user-search-image-page bg-light">
       <MyForm handleSubmit={handleSubmit} />
-      {noImagesFound ? (
+      {!images.length ? (
         <p className="no-images-found">Keine Bilder gefunden</p>
       ) : (
         <div>
-          {urlQueryString && images.length ? (
+          {urlQueryString  ? (
             <p id="query-info" className="query-info bg-dark">Ergebnisse für "{urlQueryString}":</p>
           ) : (
             ""

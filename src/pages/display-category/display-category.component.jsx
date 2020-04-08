@@ -3,26 +3,23 @@ import "./display-category.styles.scss";
 
 import PreviewImage from "../../components/preview-image/preview-image.component";
 import Footer from "../../components/footer/footer.component";
+import { fetchCategoryImages } from "../../api";
+
+
 
 const CategoryPage = ({ match }) => {
     const category = match.params.name;
     const [images, setImages] = useState([]);
 
     useEffect(() => {
-        fetchCategoryImages();
+        const fetchAPI = async () => {
+            setImages(await fetchCategoryImages(category))
+        }
+        fetchAPI()
     }, [category]);
 
-    const fetchCategoryImages = () => {
-        fetch(
-            `https://pixabay.com/api/?key=15127892-8696442402301390dd419b3b1&per_page=100&q=${category}&lang=de&safesearch=true}`
-        )
-            .then(res => res.json())
-            .then(data => {
-                const images = data.hits;
-                setImages(images);
 
-            });
-    };
+
     return (
         <div className="category-wrapper ">
             <div className="category-heading">
