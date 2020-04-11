@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -15,13 +15,13 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
 	<Provider store={store}>
-		<Router>
+		<BrowserRouter>
 			<ScrollToTop>
 				<PersistGate persistor={persistor}>
 					<App />
 				</PersistGate>
 			</ScrollToTop>
-		</Router>
+		</BrowserRouter>
 	</Provider>,
 	document.getElementById('root')
 );
