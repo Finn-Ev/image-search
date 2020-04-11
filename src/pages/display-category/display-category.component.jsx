@@ -16,6 +16,8 @@ const CategoryPage = ({ match }) => {
             setImages(await fetchCategoryImages(category))
         }
         fetchAPI()
+        console.log("live");
+
     }, [category]);
 
 
