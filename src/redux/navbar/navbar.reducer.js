@@ -1,17 +1,17 @@
 const initialState = {
-  showMobileNavbar: false
+  showMobileNavbar: false,
 };
 export const navbarReducer = (state = initialState, action) => {
   switch (action.type) {
     case "TOGGLE_NAVBAR":
       return {
         ...state,
-        showMobileNavbar: !state.showMobileNavbar
+        showMobileNavbar: !state.showMobileNavbar,
       };
     case "CLOSE_NAVBAR":
       return {
         ...state,
-        showMobileNavbar: false
+        showMobileNavbar: false,
       };
     default:
       return state;

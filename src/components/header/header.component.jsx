@@ -2,7 +2,10 @@ import React from "react";
 import "./header.styles.scss";
 
 import { connect } from "react-redux";
-import { toggleNavbar, closeNavbar } from "../../redux/navbar/navbar.actions";
+import {
+  toggleNavbar,
+  closeNavbar,
+} from "../../redux/searchImages/navbar/navbar.actions";
 
 import Navbar from "react-bootstrap/Navbar";
 import { NavLink, Link } from "react-router-dom";
@@ -17,25 +20,44 @@ const Header = ({
   showMobileNavbar,
   toggleNavbar,
   closeNavbar,
-  closeModal
+  closeModal,
 }) => {
   return (
     <>
-    <Navbar  bg="dark" className="header">
-      <Link onClick={closeNavbar} className="brand" to="/">
-        Image Search
-      </Link>
+      <Navbar bg="dark" className="header">
+        <Link onClick={closeNavbar} className="brand" to="/">
+          Image Search
+        </Link>
 
-      {showMobileNavbar ? (
-        <div className="mobile-nav-links">
-          <NavLink id="home-link" onClick={closeNavbar} exact to="/">
+        {showMobileNavbar ? (
+          <div className="mobile-nav-links">
+            <NavLink id="home-link" onClick={closeNavbar} exact to="/">
+              Home
+            </NavLink>
+
+            <MobileCategoryMenu />
+
+            <NavLink
+              onClick={closeNavbar}
+              id="favourites-link"
+              exact
+              to="/favoriten"
+            >
+              Favoriten ({favouriteImageIDs.length})
+            </NavLink>
+          </div>
+        ) : (
+          ""
+        )}
+        <div className="desktop-nav-links">
+          <NavLink onClick={closeModal} exact to="/">
             Home
           </NavLink>
 
-          <MobileCategoryMenu />
+          <NavDropdown closeModal={closeModal} />
 
           <NavLink
-            onClick={closeNavbar}
+            onClick={closeModal}
             id="favourites-link"
             exact
             to="/favoriten"
@@ -43,41 +65,45 @@ const Header = ({
             Favoriten ({favouriteImageIDs.length})
           </NavLink>
         </div>
-      ) : (
-          ""
-        )}
-      <div className="desktop-nav-links">
-        <NavLink onClick={closeModal} exact to="/">
-          Home
-        </NavLink>
 
-        <NavDropdown closeModal={closeModal}/>
-
-        <NavLink onClick={closeModal} id="favourites-link" exact to="/favoriten">
-          Favoriten ({favouriteImageIDs.length})
-        </NavLink>
-      </div>
-
-      <div onClick={toggleNavbar} className="toggle-navbar">
-        <div className={`${showMobileNavbar ? "bar-toggled" : "bar-default"} bar-1`}></div>
-        <div className={`${showMobileNavbar ? "bar-toggled" : "bar-default"} bar-2`}></div>
-        <div className={`${showMobileNavbar ? "bar-toggled" : "bar-default"} bar-3`}></div>
-      </div>
-    </Navbar>
+        <div onClick={toggleNavbar} className="toggle-navbar">
+          <div
+            className={`${
+              showMobileNavbar ? "bar-toggled" : "bar-default"
+            } bar-1`}
+          ></div>
+          <div
+            className={`${
+              showMobileNavbar ? "bar-toggled" : "bar-default"
+            } bar-2`}
+          ></div>
+          <div
+            className={`${
+              showMobileNavbar ? "bar-toggled" : "bar-default"
+            } bar-3`}
+          ></div>
+        </div>
+      </Navbar>
     </>
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   favouriteImageIDs: state.favouriteImages.imageIDs,
-  showMobileNavbar: state.navbar.showMobileNavbar
+  showMobileNavbar: state.navbar.showMobileNavbar,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   toggleNavbar: () => dispatch(toggleNavbar()),
   closeNavbar: () => dispatch(closeNavbar()),
   openModal: () => dispatch(openModal()),
-  closeModal: () => dispatch(closeModal())
+  closeModal: () => dispatch(closeModal()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
+
+// expotz createPortal(mapDispatchToProps
+//   <DeviceLightEvent alert = dispatchEvent
+//         TabPane objectHash GamepadHapticActuator heilllll
+
+//         import tt

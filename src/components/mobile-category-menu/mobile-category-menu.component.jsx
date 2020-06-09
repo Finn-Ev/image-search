@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 import { withRouter } from "react-router-dom";
 
-import { closeNavbar } from "../../redux/navbar/navbar.actions";
+import { closeNavbar } from "../../redux/searchImages/navbar/navbar.actions";
 import { connect } from "react-redux";
 
 const MobileCategoryMenu = ({ closeNavbar }) => {
