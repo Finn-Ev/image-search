@@ -1,19 +1,13 @@
 import React from "react";
-import "./header.styles.scss";
-
-import { connect } from "react-redux";
-import {
-  toggleNavbar,
-  closeNavbar,
-} from "../../redux/searchImages/navbar/navbar.actions";
-
 import Navbar from "react-bootstrap/Navbar";
-import { NavLink, Link } from "react-router-dom";
-
+import { connect } from "react-redux";
+import { Link, NavLink } from "react-router-dom";
+import { closeModal, openModal } from "../../redux/modal/modal.actions";
+import { closeNavbar, toggleNavbar } from "../../redux/navbar/navbar.actions";
+import MobileCategoryMenu from "../mobile-category-menu/mobile-category-menu.component";
 // category menus for different screens
 import NavDropdown from "../nav-dropdown/nav-dropdown.component";
-import MobileCategoryMenu from "../mobile-category-menu/mobile-category-menu.component";
-import { openModal, closeModal } from "../../redux/modal/modal.actions";
+import "./header.styles.scss";
 
 const Header = ({
   favouriteImageIDs,
